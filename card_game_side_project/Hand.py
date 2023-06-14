@@ -24,6 +24,10 @@ class Hand():
     def clear(self):
         self.cards = []
 
+    def shuffle(self):
+        import random
+        random.shuffle(self.cards)
+
     def __str__(self):
         """print the cards, but only if the hand is not empty"""
         if self.cards:
@@ -38,11 +42,15 @@ class Hand():
         
 if __name__ == "__main__":
     import Card
+    
 
     #create a hand
     deck = Hand()
     for rank in Card.RANKS:
         for suit in Card.SUITS:
             card = Card.Card(rank, suit)
-            deck.add(card)
+            deck.add(card)        
+    print(deck)
+    print("shuffling the deck")
+    deck.shuffle()
     print(deck)
