@@ -15,11 +15,13 @@ class Hand():
     def add(self, card):
         self.cards.append(card)
 
-    def give(self, card, other_hand):
-        # remove that card from this hand
-        self.cards.remove(card)
-        # add that card to the other hand
-        other_hand.add(card)
+    def dealcard(self, otherhand):
+        if len(self.cards) > 0:
+            card = self.cards.pop(0)
+            otherhand.add(card)
+            return True
+        else:
+            return False
 
     def clear(self):
         self.cards = []
@@ -54,3 +56,19 @@ if __name__ == "__main__":
     print("shuffling the deck")
     deck.shuffle()
     print(deck)
+    print("Dealing cards")
+    player1 = Hand()
+    player2 = Hand()
+    givetoplayer1 = True
+    cardsleft = True
+    while cardsleft:
+        if givetoplayer1:
+            cardsleft = deck.dealcard(player1)
+            givetoplayer1 = False
+        else:
+            cardsleft = deck.dealcard(player2)
+            givetoplayer1 = True
+    print("Player 1 Cards")
+    print(player1)
+    print("Player 2 Cards")
+    print(player2)

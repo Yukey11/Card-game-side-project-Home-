@@ -30,7 +30,7 @@ class Card:
 
     def flip(self):
          self.is_showing = not self.is_showing
-         
+
     # When displaying a card
     def __str__(self):
          representation = ""
